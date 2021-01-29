@@ -3,15 +3,73 @@
     <head>
         <title>Jogo da velha</title>
         <style>
-            .vertical_line {
-                border-left: 6px solid black;
-                height: 500px;
+            h1 {
+                padding: 50px;
+                text-align: center;
+            }
+            table {
+                border-collapse: collapse;
+                text-align: center;
+                margin: auto;
+                vertical-align: middle;
+            }
+            td {
+                height: 100px;
+                width: 100px;
+                color: black;
+                cursor: pointer;
+            }
+            .center {
+                border: 5px solid black;
+            }
+            .top_left_corner {
+                border-bottom: 5px solid black;
+                border-right: 5px solid black;
+            }
+            .top_right_corner {
+                border-bottom: 5px solid black;
+                border-left: 5px solid black;
+            }
+            .bottom_right_corner {
+                border-top: 5px solid black;
+                border-left: 5px solid black;
+            }
+            .bottom_left_corner {
+                border-top: 5px solid black;
+                border-right: 5px solid black;
             }
         </style>
     </head>
     <body>
 
-        <div class="vertical_line"></div>
+        <h1>Jogo da Velha</h1>    
+        <table>
+            <tr>
+                <td id="cel1" class="top_left_corner" onclick="test()"></td><td></td><td class="top_right_corner"></td>
+            </tr>
+            <tr>
+                <td></td><td class="center"></td><td></td>
+            </tr>
+            <tr>
+                <td class="bottom_left_corner"></td><td></td><td class="bottom_right_corner"></td>
+            </tr>
+        </table>
+
+        <script>
+            var cells = document.querySelectorAll('td');
+            for(var i = 0; i < cells.length; i++){
+                cells[i].onclick = function(e){
+                    cell = e.target
+                    if(cell.innerHTML === ''){
+                        cell.innerHTML = "X"
+                        console.log('marcou')
+                    } else {
+                        console.log('já preenchido')
+                    }
+                }
+            }
+        </script>
+
 
     </body>
 </html>
